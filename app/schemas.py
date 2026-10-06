@@ -4,6 +4,8 @@ from pydantic import BaseModel, ConfigDict, EmailStr, Field, HttpUrl, computed_f
 
 from app.config import settings
 
+SLUG_PATTERN = r"^[A-Za-z0-9_-]{3,32}$"
+
 class UserCreate(BaseModel):
     email: EmailStr
     password: str = Field(min_length=8, max_length=128)
@@ -13,7 +15,7 @@ class UserOut(BaseModel):
 
     id: int
     email: EmailStr
-    create_at: datetime
+    created_at: datetime
 
 class Token(BaseModel):
     access_token: str

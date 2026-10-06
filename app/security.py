@@ -16,6 +16,7 @@ def verify_password(password: str, hashed: str) -> bool:
 def create_access_token(subject: str) -> str:
     expire = datetime.now(UTC) + timedelta(minutes=settings.access_token_minutes)
     payload = {"sub": subject, "exp": expire}
+    return jwt.encode(payload, settings.jwt_secret, algorithm=settings.jwt_algorithm)
 
 def decode_access_token(token: str) -> str | None:
     """return the sub from token or None if invalide token"""

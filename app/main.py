@@ -1,4 +1,4 @@
-from datetime import UTC, datetime
+"""from datetime import UTC, datetime
 from typing import Annotated
 
 from fastapi import Depends, FastAPI, HTTPException, Query, status
@@ -57,4 +57,10 @@ async def get_linl(slug: str) -> LinkOut:
     link = _links.get(slug)
     if link is None:
         raise HTTPException(status.HTTP_404_NOT_FOUND, detail="Link Not Found")
-    return link
+    return link"""
+from fastapi import FastAPI
+
+from app.routers import auth
+
+app = FastAPI(title="Snip API")
+app.include_router(auth.router)
