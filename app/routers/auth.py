@@ -36,3 +36,5 @@ async def login(form: Annotated[OAuth2PasswordRequestForm, Depends()], session: 
 @router.get("/me", response_model=UserOut)
 async def me(user: CurrentUser):
     return user
+
+#TODO: change password
